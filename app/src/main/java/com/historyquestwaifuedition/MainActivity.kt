@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var hc1 = HotileCreature("oni", 78, mutableListOf(Item()))
 
 
     }
