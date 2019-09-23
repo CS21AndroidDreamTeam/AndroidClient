@@ -125,9 +125,11 @@
         <ImageView
             android:id="@+id/up_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_up"
-            app:layout_constraintBottom_toTopOf="@id/left_button"
+            android:layout_height="45dp"
+            android:paddingBottom="5dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/dpad_up"
+            app:layout_constraintBottom_toTopOf="@id/down_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -135,29 +137,39 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/left_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_left"
+            android:layout_height="25dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/dpad_left"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/right_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/up_button"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/right_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_right"
+            android:src="@drawable/dpad_right"
+            android:layout_height="25dp"
+            android:adjustViewBounds="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/up_button"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintStart_toEndOf="@id/left_button"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/down_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_down"
+            android:layout_height="45dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintVertical_bias="0.5"
+            android:paddingTop="5dp"
+            android:src="@drawable/dpad_down"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/right_button" />
+            app:layout_constraintTop_toBottomOf="@id/up_button"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
