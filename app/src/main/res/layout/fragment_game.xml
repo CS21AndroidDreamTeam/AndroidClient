@@ -12,18 +12,21 @@
 
         <fragment
             android:id="@+id/f_map"
+            app:layout_constraintHorizontal_weight="5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             android:name="com.historyquestwaifuedition.MapFragment" />
 
-        <View
-            android:id="@+id/hud"
+
+        <include layout="@layout/hud"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toEndOf="@id/f_map"
+            android:id="@+id/hud_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#FF0000"
-            app:layout_constraintStart_toEndOf="@id/f_map"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
