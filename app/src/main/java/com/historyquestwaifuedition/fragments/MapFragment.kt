@@ -15,27 +15,13 @@ import com.historyquestwaifuedition.models.Node
 import com.historyquestwaifuedition.models.Player
 import kotlinx.android.synthetic.main.fragment_map.*
 
-val MAP_SIZE = IntVec2D(5, 5)
-
 class MapFragment : Fragment() {
-    private lateinit var player: Player
-    private lateinit var map: HMap
-    private lateinit var playerView: ImageView
+    private var player: Player? = null
+    private var map: HMap? = null
+    private var playerView: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        player = Player("testplayer", 100, IntVec2D(0, 0))
-
-        val maxPosition = IntVec2D(9, 9) // TODO this is a test map
-        val testNodes = mutableListOf<Node>()
-        (0..maxPosition.y).forEach { y ->
-            (0..maxPosition.x).forEach { x ->
-                testNodes.add(Node(IntVec2D(x, y), 0))
-            }
-        }
-        map = HMap(maxPosition, testNodes)
-
     }
 
     override fun onCreateView(
@@ -49,31 +35,38 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        playerView = ImageView(context)
-        playerView.setImageResource(R.drawable.sensei)
-        (view as ViewGroup).addView(playerView)
-        playerView.layoutParams.width = 100
-        playerView.layoutParams.height = 100
+    }
 
-        object: Thread() {
-            override fun run() {
-                super.run()
-                sleep(3000)
+    fun setPlayer(player: Player) {
+        this.player = player
 
-                activity!!.runOnUiThread {
-                    player.position.x = 1
-                    updatePlayerPosition()
-                }
-            }
-        }.start()
+        if (playerView == null) {
+            playerView = ImageView(context)
+        }
+        playerView?.let {
+            it.setImageResource(R.drawable.sensei) // TODO
+            (view as ViewGroup).addView(playerView)
+            it.layoutParams.width = 100 // TODO
+            it.layoutParams.height = 100 // TODO
+        }
+
+        updatePlayerPosition()
+    }
+
+    fun setMap(map: HMap) {
+        this.map = map
+
+        updatePlayerPosition()
     }
 
     fun updatePlayerPosition() { // TODO optimize send the previous position so we don't have to check if the map images changed
+        player ?: return
+        map ?: return
 
         // update map images
         val mapTopLeft = IntVec2D(
-            (player.position.x / MAP_SIZE.x) * 5,
-            (player.position.y / MAP_SIZE.y) * 5
+            (player!!.position.x / MAP_SIZE.x) * MAP_SIZE.x,
+            (player!!.position.y / MAP_SIZE.y) * MAP_SIZE.y
         )
         val mapBottomRight = IntVec2D(
             mapTopLeft.x + MAP_SIZE.x - 1,
@@ -86,9 +79,8 @@ class MapFragment : Fragment() {
         for ((mapViewI, mapNodesI) in (mapNodesStartIndex..mapNodesEndIndex).withIndex()) {
             val imageView = gl_map.getChildAt(mapViewI) as ImageView
 
-            if (mapNodesI < map.nodes.size) {
-                // TODO set image of map node image view
-                //imageView.setImageResource()
+            if (mapNodesI < map!!.nodes.size) {
+                imageView.setImageResource(TILE_LIST[map!!.nodes[mapNodesI].tileId])
             } else { // out of bounds
                 imageView.background = null
             }
@@ -96,20 +88,24 @@ class MapFragment : Fragment() {
 
         // update player position on the map
         val playerRelativeScreenPosition = IntVec2D(
-            player.position.x % MAP_SIZE.x,
-            player.position.y % MAP_SIZE.y
+            player!!.position.x % MAP_SIZE.x,
+            player!!.position.y % MAP_SIZE.y
         )
         val mapNodeImageViewSize = gl_map.bottom / MAP_SIZE.y
         val playerViewTranslation = Vec2D(
-            (mapNodeImageViewSize * 0.5f) + (mapNodeImageViewSize * playerRelativeScreenPosition.x) - playerView.layoutParams.width * 0.5f,
-            (mapNodeImageViewSize * 0.5f) + (mapNodeImageViewSize * playerRelativeScreenPosition.y) - playerView.layoutParams.height * 0.5f
+            (mapNodeImageViewSize * 0.5f) + (mapNodeImageViewSize * playerRelativeScreenPosition.x) - playerView!!.layoutParams.width * 0.5f,
+            (mapNodeImageViewSize * 0.5f) + (mapNodeImageViewSize * playerRelativeScreenPosition.y) - playerView!!.layoutParams.height * 0.5f
         )
 
-        playerView.x = playerViewTranslation.x
-        playerView.y = playerViewTranslation.y
+        playerView!!.x = playerViewTranslation.x
+        playerView!!.y = playerViewTranslation.y
     }
 
     companion object {
+        val MAP_SIZE = IntVec2D(5, 5)
+
+        val TILE_LIST = arrayOf(R.drawable.grass4, R.drawable.dirt4)
+
         @JvmStatic
         fun newInstance() =
             MapFragment()

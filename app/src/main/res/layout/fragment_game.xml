@@ -17,13 +17,13 @@
             app:layout_constraintStart_toStartOf="parent"
             android:name="com.historyquestwaifuedition.fragments.MapFragment" />
 
-        <View
-            android:id="@+id/hud"
+        <fragment
+            android:id="@+id/f_hud"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#FF0000"
             app:layout_constraintStart_toEndOf="@id/f_map"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:name="com.historyquestwaifuedition.fragments.HUDFragment"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
