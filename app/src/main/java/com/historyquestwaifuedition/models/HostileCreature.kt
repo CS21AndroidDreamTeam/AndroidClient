@@ -2,8 +2,12 @@ package com.historyquestwaifuedition.models
 
 import com.historyquestwaifuedition.math.IntVec2D
 
-class Player(
+class HostileCreature(
     name: String,
     health: Int,
+    drops: MutableList<Item>,
     position: IntVec2D
-): Character(name = name, inventory =  mutableListOf(), health = health, position = position)
+)
+    : Character(name = name, inventory = drops, health = health, position = position)
+{
+}

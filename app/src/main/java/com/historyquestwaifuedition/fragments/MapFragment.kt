@@ -1,4 +1,4 @@
-package com.historyquestwaifuedition
+package com.historyquestwaifuedition.fragments
 
 
 import android.os.Bundle
@@ -6,14 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import android.widget.ImageView
-import androidx.core.view.children
+import com.historyquestwaifuedition.R
 import com.historyquestwaifuedition.math.IntVec2D
 import com.historyquestwaifuedition.math.Vec2D
-import com.historyquestwaifuedition.model.HMap
-import com.historyquestwaifuedition.model.Node
-import com.historyquestwaifuedition.model.Player
+import com.historyquestwaifuedition.models.HMap
+import com.historyquestwaifuedition.models.Node
+import com.historyquestwaifuedition.models.Player
 import kotlinx.android.synthetic.main.fragment_map.*
 
 val MAP_SIZE = IntVec2D(5, 5)
@@ -26,7 +25,7 @@ class MapFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        player = Player("testplayer", 100.0f, IntVec2D(0, 0))
+        player = Player("testplayer", 100, IntVec2D(0, 0))
 
         val maxPosition = IntVec2D(9, 9) // TODO this is a test map
         val testNodes = mutableListOf<Node>()

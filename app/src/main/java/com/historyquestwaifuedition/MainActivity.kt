@@ -2,8 +2,6 @@ package com.historyquestwaifuedition
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.historyquestwaifuedition.models.HotileCreature
-import com.historyquestwaifuedition.models.Item
 
 class MainActivity : AppCompatActivity() {
 
