@@ -11,6 +11,7 @@ import com.historyquestwaifuedition.math.IntVec2D
 import com.historyquestwaifuedition.models.HMap
 import com.historyquestwaifuedition.models.Node
 import com.historyquestwaifuedition.models.Player
+import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.android.synthetic.main.hud.*
 
 class GameFragment : Fragment() {
@@ -56,6 +57,7 @@ class GameFragment : Fragment() {
                 activity!!.runOnUiThread {
                     mapFragment.setMap(map)
                     mapFragment.setPlayer(player)
+                    pb_loading.visibility = View.GONE
                 }
             }
         }.start()
