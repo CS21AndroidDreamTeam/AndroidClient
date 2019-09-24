@@ -35,175 +35,202 @@
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#FFFF00"
                 android:src="@drawable/grass4"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="-0.1dp"/>
+
+
 
         </GridLayout>
 
