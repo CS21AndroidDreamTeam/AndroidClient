@@ -1,6 +1,9 @@
 package com.historyquestwaifuedition.models
 
-data class NonPlayable(
-    val name: String,
-    val dialogue : DialogueTree
-) : Character(name = name, inventory =  mutableListOf(), health = 0)
+import com.historyquestwaifuedition.math.IntVec2D
+
+class NonPlayable(
+    name: String,
+    dialogue : DialogueTree,
+    position: IntVec2D
+) : Character(name = name, inventory =  mutableListOf(), health = 0, position = position)

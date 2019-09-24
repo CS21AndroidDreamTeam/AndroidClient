@@ -1,4 +1,4 @@
-package com.historyquestwaifuedition.model
+package com.historyquestwaifuedition.models
 
 import com.historyquestwaifuedition.math.IntVec2D
 
