@@ -2,9 +2,12 @@ package com.historyquestwaifuedition.api
 
 import android.content.Context
 import com.google.gson.GsonBuilder
+import com.historyquestwaifuedition.models.NodeData
 import okhttp3.OkHttpClient
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 import java.util.concurrent.TimeUnit
 
 const val READ_TIMEOUT = 10000L
@@ -18,7 +21,7 @@ class HistoryQuestApi(context: Context) {
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("") // TODO
+        .baseUrl("https://historyquest.herokuapp.com/")
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .client(okHttpClient)
         .build()
@@ -27,5 +30,6 @@ class HistoryQuestApi(context: Context) {
 }
 
 interface HistoryQuestApiService {
-
+    @GET("api/getmap/")
+    fun getMap(): Call<MutableList<NodeData>>
 }

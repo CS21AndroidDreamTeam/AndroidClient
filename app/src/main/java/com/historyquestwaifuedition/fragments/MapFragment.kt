@@ -11,7 +11,6 @@ import com.historyquestwaifuedition.R
 import com.historyquestwaifuedition.math.IntVec2D
 import com.historyquestwaifuedition.math.Vec2D
 import com.historyquestwaifuedition.models.HMap
-import com.historyquestwaifuedition.models.Node
 import com.historyquestwaifuedition.models.Player
 import kotlinx.android.synthetic.main.fragment_map.*
 
@@ -65,33 +64,51 @@ class MapFragment : Fragment() {
 
         // update map images
         val mapTopLeft = IntVec2D(
-            (player!!.position.x / MAP_SIZE.x) * MAP_SIZE.x,
-            (player!!.position.y / MAP_SIZE.y) * MAP_SIZE.y
-        )
-        val mapBottomRight = IntVec2D(
-            mapTopLeft.x + MAP_SIZE.x - 1,
-            mapTopLeft.y + MAP_SIZE.y - 1
+            (player!!.position.x / MAP_VIEW_SIZE.x) * MAP_VIEW_SIZE.x,
+            (player!!.position.y / MAP_VIEW_SIZE.y) * MAP_VIEW_SIZE.y
         )
 
-        val mapNodesStartIndex = mapTopLeft.x + (mapTopLeft.y * MAP_SIZE.y)
-        val mapNodesEndIndex =  mapBottomRight.x + (mapBottomRight.y * MAP_SIZE.y)
+//        val mapBottomRight = IntVec2D(
+//            mapTopLeft.x + MAP_VIEW_SIZE.x - 1,
+//            mapTopLeft.y + MAP_VIEW_SIZE.y - 1
+//        )
+//
+//        val mapNodesStartIndex = mapTopLeft.x + (mapTopLeft.y * MAP_VIEW_SIZE.y)
+//        val mapNodesEndIndex =  mapBottomRight.x + (mapBottomRight.y * MAP_VIEW_SIZE.y)
+//
+//        for ((mapViewI, mapNodesI) in (mapNodesStartIndex..mapNodesEndIndex).withIndex()) {
+//            val imageView = gl_map.getChildAt(mapViewI) as ImageView
+//
+//            if (mapNodesI < map!!.nodes.size) {
+//                imageView.setImageResource(TILE_LIST[if (Math.random() < 0.5f) 0 else 1])
+//            } else { // out of bounds
+//                imageView.background = null
+//            }
+//        }
 
-        for ((mapViewI, mapNodesI) in (mapNodesStartIndex..mapNodesEndIndex).withIndex()) {
-            val imageView = gl_map.getChildAt(mapViewI) as ImageView
+        for (mapViewX in 0 until MAP_VIEW_SIZE.x) {
+            val nodeX = mapTopLeft.x + mapViewX
+            for (mapViewY in 0 until MAP_VIEW_SIZE.y) {
+                val nodeY = mapTopLeft.y + mapViewY
 
-            if (mapNodesI < map!!.nodes.size) {
-                imageView.setImageResource(TILE_LIST[map!!.nodes[mapNodesI].tileId])
-            } else { // out of bounds
-                imageView.background = null
+                val mapViewI = mapViewX + (mapViewY * MAP_VIEW_SIZE.y)
+                val imageView = gl_map.getChildAt(mapViewI) as ImageView
+
+                if (nodeX <= map!!.maxPosition.x) {
+                    val node = map!!.nodes[nodeX][nodeY]
+                    imageView.setImageResource(TILE_LIST[if (node.name == "Road") 1 else 0])
+                } else { // out of bounds
+                    imageView.background = null // TODO check if this is black
+                }
             }
         }
 
         // update player position on the map
         val playerRelativeScreenPosition = IntVec2D(
-            player!!.position.x % MAP_SIZE.x,
-            player!!.position.y % MAP_SIZE.y
+            player!!.position.x % MAP_VIEW_SIZE.x,
+            player!!.position.y % MAP_VIEW_SIZE.y
         )
-        val mapNodeImageViewSize = gl_map.bottom / MAP_SIZE.y
+        val mapNodeImageViewSize = gl_map.bottom / MAP_VIEW_SIZE.y
         val playerViewTranslation = Vec2D(
             (mapNodeImageViewSize * 0.5f) + (mapNodeImageViewSize * playerRelativeScreenPosition.x) - playerView!!.layoutParams.width * 0.5f,
             (mapNodeImageViewSize * 0.5f) + (mapNodeImageViewSize * playerRelativeScreenPosition.y) - playerView!!.layoutParams.height * 0.5f
@@ -102,7 +119,7 @@ class MapFragment : Fragment() {
     }
 
     companion object {
-        val MAP_SIZE = IntVec2D(5, 5)
+        val MAP_VIEW_SIZE = IntVec2D(5, 5)
 
         val TILE_LIST = arrayOf(R.drawable.grass4, R.drawable.dirt4)
 
