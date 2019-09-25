@@ -104,11 +104,11 @@ class MapFragment : Fragment() {
                 val mapViewI = mapViewX + (mapViewY * MAP_VIEW_SIZE.x)
                 val imageView = gl_map.getChildAt(mapViewI) as ImageView
 
-                if (nodeX <= map!!.maxPosition.x) {
+                if (nodeX < map!!.size.x) {
                     val node = map!!.nodes[nodeX][nodeY]
                     imageView.setImageResource(TILE_LIST[if (node.name == "Road") 1 else 0])
                 } else { // out of bounds
-                    imageView.background = null // TODO check if this is black
+                    imageView.setImageBitmap(null)
                 }
             }
         }

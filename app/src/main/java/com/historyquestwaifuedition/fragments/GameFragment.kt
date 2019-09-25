@@ -118,11 +118,11 @@ class GameFragment : Fragment() {
         }
 
         var hasFailed = false
-        val maxPosition = IntVec2D(19, 19)
+        val size = IntVec2D(20, 20)
         val nodesTemp = mutableListOf<MutableList<Node?>>()
-        for (x in 0..maxPosition.x) {
+        for (x in 0 until size.x) {
             val ys = mutableListOf<Node?>()
-            for (y in 0..maxPosition.y) {
+            for (y in 0 until size.y) {
                 ys.add(null)
             }
             nodesTemp.add(ys)
@@ -149,12 +149,12 @@ class GameFragment : Fragment() {
             return
         }
 
-        map = HMap(maxPosition, nodesTemp as MutableList<MutableList<Node>>)
+        map = HMap(size, nodesTemp as MutableList<MutableList<Node>>)
         mapFragment.setMap(map)
     }
 
     private fun moveRight() {
-        if (player.position.x == map.maxPosition.x) return // OOB
+        if (player.position.x == map.size.x - 1) return // OOB
         player.position.x += 1
         mapFragment.updatePlayerPosition()
     }
@@ -172,7 +172,7 @@ class GameFragment : Fragment() {
     }
 
     private fun moveDown() {
-        if (player.position.y == map.maxPosition.y) return // OOB
+        if (player.position.y == map.size.y - 1) return // OOB
         player.position.y += 1
         mapFragment.updatePlayerPosition()
     }
