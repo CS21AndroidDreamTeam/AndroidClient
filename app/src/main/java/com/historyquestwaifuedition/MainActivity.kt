@@ -6,16 +6,14 @@ import com.historyquestwaifuedition.enums.MainMenuSelections
 import com.historyquestwaifuedition.fragments.GameFragment
 import com.historyquestwaifuedition.fragments.MainMenuFragment
 
-class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickListener {
+class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickListener,
+GameFragment.OnReturnToMainMenuListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fl_container, MainMenuFragment.newInstance())
-            .commit()
-
+        openMainMenu()
     }
 
     override fun onSelectionsClick(clickedSelection: MainMenuSelections) {
@@ -25,6 +23,16 @@ class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickList
                 .commit()
             MainMenuSelections.QUIT -> finish()
         }
+    }
+
+    override fun onReturnToMainMenu() {
+        openMainMenu()
+    }
+
+    fun openMainMenu() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fl_container, MainMenuFragment.newInstance())
+            .commit()
     }
 }
 

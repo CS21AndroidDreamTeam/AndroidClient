@@ -1,6 +1,7 @@
 package com.historyquestwaifuedition.fragments
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,9 +28,10 @@ class GameFragment : Fragment() {
     private lateinit var mapFragment: MapFragment
     private lateinit var HUDFragment: HUDFragment
 
+    private var onReturnToMainMenuListener: OnReturnToMainMenuListener? = null
+
     private var getMapCall: Call<MutableList<NodeData>>? = null
     private var getMapServerCalls = 0
-    private val MAX_SERVER_CALL = 5
     private val getMapCallback: Callback<MutableList<NodeData>> = object: Callback<MutableList<NodeData>> {
         override fun onFailure(call: Call<MutableList<NodeData>>, t: Throwable) {
             // call server again because required data is missing
@@ -106,7 +108,8 @@ class GameFragment : Fragment() {
             t_loading.text = "Loading Map"
             getMapCall?.enqueue(getMapCallback)
         } else {
-            // TODO return to the main menu
+            // return to the main menu since we cannot get the proper data from the server
+            onReturnToMainMenuListener?.onReturnToMainMenu()
         }
     }
 
@@ -177,15 +180,32 @@ class GameFragment : Fragment() {
         mapFragment.updatePlayerPosition()
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        if (context is OnReturnToMainMenuListener) {
+            onReturnToMainMenuListener = context
+        } else {
+            throw RuntimeException("Context must implement OnReturnToMainMenuListener")
+        }
+    }
+
     override fun onDetach() {
         super.onDetach()
 
+        onReturnToMainMenuListener = null
         getMapCall?.cancel()
     }
 
     companion object {
+        private const val MAX_SERVER_CALL = 5
+
         @JvmStatic
         fun newInstance() =
             GameFragment()
+    }
+
+    interface OnReturnToMainMenuListener {
+        fun onReturnToMainMenu()
     }
 }
