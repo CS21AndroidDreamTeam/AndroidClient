@@ -35,6 +35,10 @@ class MainMenuFragment : Fragment() {
             onSelectionsClickListener?.onSelectionsClick(MainMenuSelections.NEW_GAME)
         }
 
+        b_login.setOnClickListener {
+            onSelectionsClickListener?.onSelectionsClick(MainMenuSelections.LOGIN)
+        }
+
         b_quit.setOnClickListener {
             onSelectionsClickListener?.onSelectionsClick(MainMenuSelections.QUIT)
         }

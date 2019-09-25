@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainMenuFragment"
+    tools:context=".fragments.LoginFragment"
     android:clickable="true"
     android:focusable="true"
     android:background="#000000">
@@ -15,23 +15,39 @@
         android:layout_gravity="center"
         android:paddingTop="50dp">
 
-        <Button
-            android:id="@+id/b_new_game"
+        <EditText
             android:layout_width="200dp"
+            android:layout_margin="5dp"
+            android:padding="15dp"
+            android:background="#FFFFFF"
             android:layout_height="wrap_content"
-            android:text="New Game"/>
+            android:hint="Username" />
+
+        <EditText
+            android:layout_width="200dp"
+            android:background="#FFFFFF"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:hint="Password" />
 
         <Button
-            android:id="@+id/b_login"
             android:layout_width="200dp"
+            android:padding="15dp"
+            android:layout_margin="5dp"
             android:layout_height="wrap_content"
-            android:text="Login"/>
+            android:text="Login"
+            />
 
-        <Button
-            android:id="@+id/b_quit"
+        <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Quit"/>
+            android:textColor="#0000FF"
+            android:paddingTop="5dp"
+            android:text="Sign Up"
+            android:textAlignment="textEnd"
+            />
 
     </LinearLayout>
 
