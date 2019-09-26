@@ -9,17 +9,16 @@ import com.historyquestwaifuedition.fragments.LoginFragment
 import com.historyquestwaifuedition.fragments.MainMenuFragment
 import com.historyquestwaifuedition.fragments.SignupFragment
 
-class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickListener, LoginFragment.OnSelectionsClickListener {
+class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickListener,
+    LoginFragment.OnSelectionsClickListener,
+    GrameFragment.OnReturnToMainMenuListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fl_container, MainMenuFragment.newInstance())
-            .commit()
-
+        openMainMenu()
     }
 
     override fun onSelectionsClick(clickedSelection: MainMenuSelections) {
@@ -45,5 +44,15 @@ class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickList
         }
     }
 
+
+    override fun onReturnToMainMenu() {
+        openMainMenu()
+    }
+
+    fun openMainMenu() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fl_container, MainMenuFragment.newInstance())
+            .commit()
+    }
 }
 

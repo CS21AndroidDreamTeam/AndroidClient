@@ -1,6 +1,7 @@
 package com.historyquestwaifuedition.fragments
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,9 +28,10 @@ class GameFragment : Fragment() {
     private lateinit var mapFragment: MapFragment
     private lateinit var HUDFragment: HUDFragment
 
+    private var onReturnToMainMenuListener: OnReturnToMainMenuListener? = null
+
     private var getMapCall: Call<MutableList<NodeData>>? = null
     private var getMapServerCalls = 0
-    private val MAX_SERVER_CALL = 5
     private val getMapCallback: Callback<MutableList<NodeData>> = object: Callback<MutableList<NodeData>> {
         override fun onFailure(call: Call<MutableList<NodeData>>, t: Throwable) {
             // call server again because required data is missing
@@ -106,7 +108,8 @@ class GameFragment : Fragment() {
             t_loading.text = "Loading Map"
             getMapCall?.enqueue(getMapCallback)
         } else {
-            // TODO return to the main menu
+            // return to the main menu since we cannot get the proper data from the server
+            onReturnToMainMenuListener?.onReturnToMainMenu()
         }
     }
 
@@ -118,11 +121,11 @@ class GameFragment : Fragment() {
         }
 
         var hasFailed = false
-        val maxPosition = IntVec2D(19, 19)
+        val size = IntVec2D(20, 20)
         val nodesTemp = mutableListOf<MutableList<Node?>>()
-        for (x in 0..maxPosition.x) {
+        for (x in 0 until size.x) {
             val ys = mutableListOf<Node?>()
-            for (y in 0..maxPosition.y) {
+            for (y in 0 until size.y) {
                 ys.add(null)
             }
             nodesTemp.add(ys)
@@ -149,12 +152,12 @@ class GameFragment : Fragment() {
             return
         }
 
-        map = HMap(maxPosition, nodesTemp as MutableList<MutableList<Node>>)
+        map = HMap(size, nodesTemp as MutableList<MutableList<Node>>)
         mapFragment.setMap(map)
     }
 
     private fun moveRight() {
-        if (player.position.x == map.maxPosition.x) return // OOB
+        if (player.position.x == map.size.x - 1) return // OOB
         player.position.x += 1
         mapFragment.updatePlayerPosition()
     }
@@ -172,20 +175,37 @@ class GameFragment : Fragment() {
     }
 
     private fun moveDown() {
-        if (player.position.y == map.maxPosition.y) return // OOB
+        if (player.position.y == map.size.y - 1) return // OOB
         player.position.y += 1
         mapFragment.updatePlayerPosition()
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        if (context is OnReturnToMainMenuListener) {
+            onReturnToMainMenuListener = context
+        } else {
+            throw RuntimeException("Context must implement OnReturnToMainMenuListener")
+        }
     }
 
     override fun onDetach() {
         super.onDetach()
 
+        onReturnToMainMenuListener = null
         getMapCall?.cancel()
     }
 
     companion object {
+        private const val MAX_SERVER_CALL = 5
+
         @JvmStatic
         fun newInstance() =
             GameFragment()
+    }
+
+    interface OnReturnToMainMenuListener {
+        fun onReturnToMainMenu()
     }
 }
