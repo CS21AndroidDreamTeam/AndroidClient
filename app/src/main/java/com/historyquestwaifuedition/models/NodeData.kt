@@ -1,5 +1,7 @@
 package com.historyquestwaifuedition.models
 
+import java.io.Serializable
+
 
 class NodeData(
     var id: Int? = null,
@@ -7,4 +9,4 @@ class NodeData(
     var desc: String? = null,
     var positionx: Int? = null,
     var positiony: Int? = null
-)
+) : Serializable
