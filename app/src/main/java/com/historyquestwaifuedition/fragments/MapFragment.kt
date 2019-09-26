@@ -54,6 +54,16 @@ class MapFragment : Fragment() {
 
     fun setMap(map: HMap) {
         this.map = map
+        gl_map.removeAllViews()
+        gl_map.columnCount = MAP_VIEW_SIZE.x
+        gl_map.rowCount = MAP_VIEW_SIZE.y
+        val nodeWidth = gl_map.bottom / MAP_VIEW_SIZE.y
+        for (i in 0..(MAP_VIEW_SIZE.x * MAP_VIEW_SIZE.y)) {
+            val imageView = ImageView(context)
+            gl_map.addView(imageView)
+            imageView.layoutParams.width = nodeWidth
+            imageView.layoutParams.height = nodeWidth
+        }
 
         updatePlayerPosition()
     }
@@ -91,14 +101,14 @@ class MapFragment : Fragment() {
             for (mapViewY in 0 until MAP_VIEW_SIZE.y) {
                 val nodeY = mapTopLeft.y + mapViewY
 
-                val mapViewI = mapViewX + (mapViewY * MAP_VIEW_SIZE.y)
+                val mapViewI = mapViewX + (mapViewY * MAP_VIEW_SIZE.x)
                 val imageView = gl_map.getChildAt(mapViewI) as ImageView
 
-                if (nodeX <= map!!.maxPosition.x) {
+                if (nodeX < map!!.size.x && nodeY < map!!.size.y) {
                     val node = map!!.nodes[nodeX][nodeY]
                     imageView.setImageResource(TILE_LIST[if (node.name == "Road") 1 else 0])
                 } else { // out of bounds
-                    imageView.background = null // TODO check if this is black
+                    imageView.setImageBitmap(null)
                 }
             }
         }
@@ -119,7 +129,7 @@ class MapFragment : Fragment() {
     }
 
     companion object {
-        val MAP_VIEW_SIZE = IntVec2D(5, 5)
+        val MAP_VIEW_SIZE = IntVec2D(6, 6)
 
         val TILE_LIST = arrayOf(R.drawable.grass4, R.drawable.dirt4)
 
