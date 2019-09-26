@@ -40,7 +40,7 @@ class MainMenuFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
 
         if (context is OnSelectionsClickListener) {
@@ -49,6 +49,8 @@ class MainMenuFragment : Fragment() {
             throw RuntimeException("Context must implement OnSelectionsClickListener")
         }
     }
+
+
 
     override fun onDetach() {
         super.onDetach()
