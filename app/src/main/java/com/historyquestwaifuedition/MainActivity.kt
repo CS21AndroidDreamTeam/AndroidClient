@@ -2,12 +2,15 @@ package com.historyquestwaifuedition
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.historyquestwaifuedition.enums.LoginMenuSelections
 import com.historyquestwaifuedition.enums.MainMenuSelections
 import com.historyquestwaifuedition.fragments.GameFragment
 import com.historyquestwaifuedition.fragments.LoginFragment
 import com.historyquestwaifuedition.fragments.MainMenuFragment
+import com.historyquestwaifuedition.fragments.SignupFragment
 
-class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickListener {
+class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickListener, LoginFragment.OnSelectionsClickListener {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,5 +33,17 @@ class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickList
                 .commit()
         }
     }
+
+    override fun onSelectionsClick(clickedSelection: LoginMenuSelections) {
+        when (clickedSelection) {
+            LoginMenuSelections.SIGN_UP -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_container, SignupFragment.newInstance())
+                .commit()
+            LoginMenuSelections.LOGIN -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_container, MainMenuFragment.newInstance())
+                .commit()
+        }
+    }
+
 }
 

@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 const val READ_TIMEOUT = 10000L
@@ -32,4 +33,6 @@ class HistoryQuestApi(context: Context) {
 interface HistoryQuestApiService {
     @GET("api/getmap/")
     fun getMap(): Call<MutableList<NodeData>>
+    @POST("api/login")
+    fun sendLogin(): Call<String>
 }
