@@ -2,12 +2,18 @@ package com.historyquestwaifuedition.api
 
 import android.content.Context
 import com.google.gson.GsonBuilder
+import com.historyquestwaifuedition.models.LoginDetails
+import com.historyquestwaifuedition.models.LoginKey
 import com.historyquestwaifuedition.models.NodeData
+import com.historyquestwaifuedition.models.RegistrationDetails
 import okhttp3.OkHttpClient
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 const val READ_TIMEOUT = 10000L
@@ -32,4 +38,8 @@ class HistoryQuestApi(context: Context) {
 interface HistoryQuestApiService {
     @GET("api/getmap/")
     fun getMap(): Call<MutableList<NodeData>>
+    @POST("api/login/")
+    fun sendLogin(@Body body: LoginDetails): Call<LoginKey>
+    @POST("api/registration/")
+    fun sendRegistration(@Body body: RegistrationDetails): Call<LoginKey>
 }
