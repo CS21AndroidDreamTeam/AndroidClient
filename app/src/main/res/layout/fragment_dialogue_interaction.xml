@@ -36,7 +36,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
-        tools:src="@drawable/playercontrolled"
+        android:src="@drawable/playercontrolled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_dialogue_npc"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,6 +51,7 @@
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
         android:src="@drawable/hiclipart_com_id_vmbti"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/b_dialogue_skip"
         app:layout_constraintHorizontal_bias="0.5"
@@ -59,9 +60,9 @@
 
     <TextView
         android:id="@+id/tv_dialogue_speaker_name"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="#4CAF50"
         android:text="Cat"
         app:layout_constraintBottom_toTopOf="@+id/tv_dialogue_speaker"
         app:layout_constraintStart_toStartOf="@+id/tv_dialogue_speaker" />
@@ -69,18 +70,18 @@
     <TextView
         android:id="@+id/tv_dialogue_speaker"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:maxLines="3"
-        tools:text="This is a large block of text that will be so big that it will span across the screen because I want it to and you clearly can't stop me from doing this because I created this app and I have a blatent disregard for the user experience."
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="This is a large block of text that will be so big that it will span across the screen because I want it to and you clearly can't stop me from doing this because I created this app and I have a blatent disregard for the user experience." />
 
     <Button
         android:id="@+id/b_choice_left"
@@ -88,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:text="Dialogue Choice Left"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_dialogue_background" />
@@ -98,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Dialogue Choice Right"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_choice_left" />
