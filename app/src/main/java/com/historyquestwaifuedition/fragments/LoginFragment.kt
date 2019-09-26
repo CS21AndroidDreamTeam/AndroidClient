@@ -73,8 +73,9 @@ class LoginFragment : Fragment() {
 
             sendLogin = historyQuestApiService.sendLogin(loginInfo)
             sendLogin?.enqueue(sendLoginCallback)
-
-
+        }
+        tv_go_back.setOnClickListener{
+            onSelectionsClickListener?.onSelectionsClick((LoginMenuSelections.BACK_TO_MENU))
         }
 
     }
