@@ -46,6 +46,9 @@ class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickList
             LoginMenuSelections.SIGN_UP_FINAL -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_container, MainMenuFragment.newInstance())
                 .commit()
+            LoginMenuSelections.BACK_TO_MENU -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_container, MainMenuFragment.newInstance())
+                .commit()
         }
     }
 

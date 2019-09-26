@@ -123,6 +123,9 @@ class SignupFragment : Fragment() {
             sendRegistration = historyQuestApiService.sendRegistration(registrationInfo)
             sendRegistration?.enqueue(sendRegistrationCallback)
         }
+        tv_cancel_sign_up.setOnClickListener{
+            onSelectionsClickListener?.onSelectionsClick((LoginMenuSelections.BACK_TO_MENU))
+        }
 
 
     }
