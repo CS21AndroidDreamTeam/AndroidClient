@@ -16,6 +16,7 @@
             android:paddingTop="50dp">
 
             <EditText
+                android:id="@+id/et_r_username"
                 android:layout_width="200dp"
                 android:layout_margin="5dp"
                 android:padding="15dp"
@@ -23,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Username" />
             <EditText
+                android:id="@+id/et_r_email"
                 android:layout_width="200dp"
                 android:layout_margin="5dp"
                 android:padding="15dp"
@@ -31,6 +33,7 @@
                 android:hint="Email" />
 
             <EditText
+                android:id="@+id/et_r_password1"
                 android:layout_width="200dp"
                 android:background="#FFFFFF"
                 android:inputType="textPassword"
@@ -39,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Password" />
             <EditText
+                android:id="@+id/et_r_password2"
                 android:layout_width="200dp"
                 android:background="#FFFFFF"
                 android:inputType="textPassword"

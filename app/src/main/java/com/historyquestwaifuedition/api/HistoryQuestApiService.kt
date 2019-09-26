@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import com.historyquestwaifuedition.models.LoginDetails
 import com.historyquestwaifuedition.models.LoginKey
 import com.historyquestwaifuedition.models.NodeData
+import com.historyquestwaifuedition.models.RegistrationDetails
 import okhttp3.OkHttpClient
 import org.json.JSONObject
 import retrofit2.Call
@@ -39,4 +40,6 @@ interface HistoryQuestApiService {
     fun getMap(): Call<MutableList<NodeData>>
     @POST("api/login/")
     fun sendLogin(@Body body: LoginDetails): Call<LoginKey>
+    @POST("api/registration/")
+    fun sendRegistration(@Body body: RegistrationDetails): Call<LoginKey>
 }

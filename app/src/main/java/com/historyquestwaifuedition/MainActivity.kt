@@ -12,7 +12,8 @@ import com.historyquestwaifuedition.fragments.SignupFragment
 
 class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickListener,
     LoginFragment.OnSelectionsClickListener,
-    GameFragment.OnReturnToMainMenuListener{
+    GameFragment.OnReturnToMainMenuListener,
+    SignupFragment.OnSelectionsClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +40,10 @@ class MainActivity : AppCompatActivity(), MainMenuFragment.OnSelectionsClickList
             LoginMenuSelections.SIGN_UP -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_container, SignupFragment.newInstance())
                 .commit()
-            LoginMenuSelections.LOGIN ->
-                supportFragmentManager.beginTransaction()
+            LoginMenuSelections.LOGIN -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_container, MainMenuFragment.newInstance())
+                .commit()
+            LoginMenuSelections.SIGN_UP_FINAL -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_container, MainMenuFragment.newInstance())
                 .commit()
         }
