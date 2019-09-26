@@ -131,7 +131,7 @@ class MapFragment : Fragment() {
     companion object {
         val MAP_VIEW_SIZE = IntVec2D(6, 6)
 
-        val TILE_LIST = arrayOf(R.drawable.grass4, R.drawable.dirt4)
+        val TILE_LIST = arrayOf(R.drawable.grass5, R.drawable.dirt5)
 
         @JvmStatic
         fun newInstance() =
