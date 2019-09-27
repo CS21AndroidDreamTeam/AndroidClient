@@ -7,7 +7,7 @@
     tools:context=".fragments.DialogueInteraction">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/b_dialogue_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@color/colorAccent"
+        tools:src="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,21 +38,22 @@
         android:scaleType="fitCenter"
         android:src="@drawable/playercontrolled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/iv_dialogue_npc"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_dialogue_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="150dp"
+        android:id="@+id/iv_dialogue_npc"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
         android:src="@drawable/hiclipart_com_id_vmbti"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/b_dialogue_skip"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_dialogue_player"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,33 +62,34 @@
         android:id="@+id/tv_dialogue_speaker_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:text="Cat"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView" />
+        android:background="#4CAF50"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_dialogue_speaker"
+        app:layout_constraintStart_toStartOf="@+id/tv_dialogue_speaker" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_dialogue_speaker"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:maxLines="3"
-        android:text="This is a large block of text that will be so big that it will span across the screen because I want it to and you clearly can't stop me from doing this because I created this app and I have a blatent disregard for the user experience."
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="This is a large block of text that will be so big that it will span across the screen because I want it to and you clearly can't stop me from doing this because I created this app and I have a blatent disregard for the user experience." />
 
     <Button
         android:id="@+id/b_choice_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
-        android:text="Dialogue Choice Left"
+        android:text="Hell Yeah"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_dialogue_background" />
@@ -97,7 +99,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Dialogue Choice Right"
+        android:text="Hell No"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/b_choice_left" />

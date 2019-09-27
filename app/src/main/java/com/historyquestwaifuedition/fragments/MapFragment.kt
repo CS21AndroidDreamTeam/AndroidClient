@@ -11,6 +11,7 @@ import com.historyquestwaifuedition.R
 import com.historyquestwaifuedition.math.IntVec2D
 import com.historyquestwaifuedition.math.Vec2D
 import com.historyquestwaifuedition.models.HMap
+import com.historyquestwaifuedition.models.Node
 import com.historyquestwaifuedition.models.Player
 import kotlinx.android.synthetic.main.fragment_map.*
 
@@ -106,7 +107,62 @@ class MapFragment : Fragment() {
 
                 if (nodeX < map!!.size.x && nodeY < map!!.size.y) {
                     val node = map!!.nodes[nodeX][nodeY]
-                    imageView.setImageResource(TILE_LIST[if (node.name == "Road") 1 else 0])
+
+                    when (node.name) {
+                        "Road"->{
+                            imageView.setImageResource(TILE_LIST[0])
+                        }
+                        "Prehistoric Cave" ->{
+                            imageView.setImageResource(R.drawable.backpack)
+                        }
+                        "Medieval Wizards Tower" -> {
+                            imageView.setImageResource(R.drawable.backpack)
+                        }
+                        "Abandoned Cottage" -> {
+                            imageView.setImageResource(R.drawable.belt)
+                        }
+                        "Alchemists Laboratory" -> {
+                            imageView.setImageResource(R.drawable.belt)
+                        }
+                        "Viking Barracks" -> {
+                            imageView.setImageResource(R.drawable.bomb)
+                        }
+                        "Roman Colosseum" -> {
+                            imageView.setImageResource(R.drawable.bomb)
+                        }
+                        "London Shop" -> {
+                            imageView.setImageResource(R.drawable.book)
+                        }
+                        "Futuristic Lab" -> {
+                            imageView.setImageResource(R.drawable.book)
+                        }
+                        "Barbaric Outpost" -> {
+                            imageView.setImageResource(R.drawable.bronze_coin)
+                        }
+                        "Western Town" -> {
+                            imageView.setImageResource(R.drawable.bronze_coin)
+                        }
+                        "Colonial Puritan Church" -> {
+                            imageView.setImageResource(R.drawable.clover)
+                        }
+                        "Nazi Meeting Hall" -> {
+                            imageView.setImageResource(R.drawable.clover)
+                        }
+                        "Cold War Nuclear Site" -> {
+                            imageView.setImageResource(R.drawable.feather)
+                        }
+                        "Chinese Pagoda" -> {
+                            imageView.setImageResource(R.drawable.feather)
+                        }
+                        "Beached Pirate Ship" -> {
+                            imageView.setImageResource(R.drawable.ring)
+                        }
+
+                        else-> {
+                            imageView.setImageResource(TILE_LIST[1])
+                        }
+                    }
+
                 } else { // out of bounds
                     imageView.setImageBitmap(null)
                 }
@@ -127,6 +183,9 @@ class MapFragment : Fragment() {
         playerView!!.x = playerViewTranslation.x
         playerView!!.y = playerViewTranslation.y
     }
+
+    fun getLandmarkNode(player: Player) : Node = map!!.nodes[player.position.x][player.position.y]
+
 
     companion object {
         val MAP_VIEW_SIZE = IntVec2D(6, 6)

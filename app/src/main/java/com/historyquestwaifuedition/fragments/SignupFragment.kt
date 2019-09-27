@@ -140,7 +140,7 @@ class SignupFragment : Fragment() {
         fun onSelectionsClick(clickedSelection: LoginMenuSelections)
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
 
         if (context is SignupFragment.OnSelectionsClickListener) {
