@@ -44,7 +44,7 @@ class MapFragment : Fragment() {
             playerView = ImageView(context)
         }
         playerView?.let {
-            it.setImageResource(R.drawable.sensei) // TODO
+            it.setImageResource(R.drawable.playercontrolled) // TODO
             (view as ViewGroup).addView(playerView)
             it.layoutParams.width = 100 // TODO
             it.layoutParams.height = 100 // TODO
