@@ -43,7 +43,7 @@ class NonPlayableFactory {
 
             "Viking Barracks" -> {
                 val leftChoice = DialogueNode("I like your bravery but I'm a trained warrior who will crush you. Take this to help you get stronger.")
-                val rightChoice = DialogueNode("")
+                val rightChoice = DialogueNode("You're a scaredy cat. Just as I expected. ")
                 val dialogue = DialogueNode("Ja. I am a viking with braided hair and fancy sword. Fancy a duel?",
                     choiceLeft = leftChoice,
                     choiceRight = rightChoice)

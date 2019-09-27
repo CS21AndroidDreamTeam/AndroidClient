@@ -1,6 +1,7 @@
 package com.historyquestwaifuedition.fragments
 
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -87,6 +88,10 @@ class GameFragment : Fragment() {
 
         HUDFragment.down_button.setOnClickListener {
             moveDown()
+        }
+
+        HUDFragment.treasure.setOnClickListener{
+            enterRoom()
         }
 
         object: Thread() {
@@ -178,6 +183,19 @@ class GameFragment : Fragment() {
         if (player.position.y == map.size.y - 1) return // OOB
         player.position.y += 1
         mapFragment.updatePlayerPosition()
+    }
+
+    private fun enterRoom(){
+        val node = mapFragment.getLandmarkNode(player)
+
+        if (node.name != "Road") {
+            val dialogueFrag = DialogueInteraction.newInstance(player, node)
+
+            childFragmentManager.beginTransaction()
+                .add(R.id.fl_game_container, dialogueFrag)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     override fun onAttach(context: Context) {

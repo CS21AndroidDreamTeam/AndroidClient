@@ -19,15 +19,16 @@ private const val ARG_LANDMARK = "landmark"
 class DialogueInteraction : Fragment() {
     private lateinit var historyQuestApiService: HistoryQuestApiService
     private lateinit var player: Player
-    private lateinit var landmark: NodeData
+    private lateinit var landmark: Node
     private lateinit var dialogue: NonPlayable
+    var isComplete: Boolean = false
     var giveItem: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             player = it.getSerializable(ARG_PLAYER) as Player
-            landmark = it.getSerializable(ARG_LANDMARK) as NodeData
+            landmark = it.getSerializable(ARG_LANDMARK) as Node
         }
 
         historyQuestApiService = HistoryQuestApi(context!!).service
@@ -53,6 +54,7 @@ class DialogueInteraction : Fragment() {
             "Prehistoric Cave" -> {
                 iv_dialogue_background.setImageResource(R.drawable.bgcave)
                 iv_dialogue_npc.setImageResource(R.drawable.npccave)
+
             }
             "Medieval Wizards Tower" -> {
                 iv_dialogue_background.setImageResource(R.drawable.bgwizard)
@@ -111,14 +113,49 @@ class DialogueInteraction : Fragment() {
                 iv_dialogue_npc.setImageResource(R.drawable.npcpirate)
             }
             else -> throw IllegalArgumentException("This shouldn't be possible")
+        }
+
+        tv_dialogue_speaker_name.text = dialogue.name
+        tv_dialogue_speaker.text = dialogue.dialogue.dialgoue
+
+        tv_dialogue_speaker.setOnClickListener {
+            if(isComplete) {
+                fragmentManager!!.popBackStack()
+            } else {
+                b_choice_left.visibility = View.VISIBLE
+                b_choice_right.visibility = View.VISIBLE
+            }
 
         }
+
+        //Affirmative
+        b_choice_left.setOnClickListener {
+            isComplete = true
+            b_choice_left.visibility = View.GONE
+            b_choice_right.visibility = View.GONE
+            tv_dialogue_speaker.text = dialogue.dialogue.choiceLeft!!.dialgoue
+        }
+
+        //Not Affirmative
+        b_choice_right.setOnClickListener {
+            isComplete = true
+            b_choice_left.visibility = View.GONE
+            b_choice_right.visibility = View.GONE
+            tv_dialogue_speaker.text = dialogue.dialogue.choiceRight!!.dialgoue
+        }
+
+
+
+        b_dialogue_skip.setOnClickListener {
+           fragmentManager!!.popBackStack()
+        }
+
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(player: Player, landmark: NodeData) =
+        fun newInstance(player: Player, landmark: Node) =
             DialogueInteraction().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_PLAYER, player)

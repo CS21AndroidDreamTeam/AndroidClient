@@ -46,12 +46,12 @@
 
     <ImageView
         android:id="@+id/iv_dialogue_npc"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
         android:src="@drawable/hiclipart_com_id_vmbti"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/b_dialogue_skip"
         app:layout_constraintHorizontal_bias="0.5"
@@ -60,10 +60,10 @@
 
     <TextView
         android:id="@+id/tv_dialogue_speaker_name"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#4CAF50"
-        android:text="Cat"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_dialogue_speaker"
         app:layout_constraintStart_toStartOf="@+id/tv_dialogue_speaker" />
 
@@ -88,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
-        android:text="Dialogue Choice Left"
+        android:text="Hell Yeah"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Dialogue Choice Right"
+        android:text="Hell No"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

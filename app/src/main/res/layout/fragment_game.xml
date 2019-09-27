@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_game_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.GameFragment"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    tools:context=".fragments.GameFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,39 +15,40 @@
 
         <fragment
             android:id="@+id/f_map"
+            android:name="com.historyquestwaifuedition.fragments.MapFragment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:name="com.historyquestwaifuedition.fragments.MapFragment" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <fragment
             android:id="@+id/f_hud"
+            android:name="com.historyquestwaifuedition.fragments.HUDFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@id/f_map"
             app:layout_constraintEnd_toEndOf="parent"
-            android:name="com.historyquestwaifuedition.fragments.HUDFragment"/>
+            app:layout_constraintStart_toEndOf="@id/f_map" />
 
         <FrameLayout
             android:id="@+id/fl_loading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="visible">
 
             <ProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#000000"
                 android:clickable="true"
-                android:focusable="true"/>
+                android:focusable="true" />
 
             <TextView
                 android:id="@+id/t_loading"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:text="Loading Map"
-                android:textColor="#FFFFFF"
-                android:gravity="center"/>
+                android:textColor="#FFFFFF" />
 
         </FrameLayout>
 

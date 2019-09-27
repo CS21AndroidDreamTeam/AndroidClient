@@ -11,6 +11,7 @@ import com.historyquestwaifuedition.R
 import com.historyquestwaifuedition.math.IntVec2D
 import com.historyquestwaifuedition.math.Vec2D
 import com.historyquestwaifuedition.models.HMap
+import com.historyquestwaifuedition.models.Node
 import com.historyquestwaifuedition.models.Player
 import kotlinx.android.synthetic.main.fragment_map.*
 
@@ -182,6 +183,9 @@ class MapFragment : Fragment() {
         playerView!!.x = playerViewTranslation.x
         playerView!!.y = playerViewTranslation.y
     }
+
+    fun getLandmarkNode(player: Player) : Node = map!!.nodes[player.position.x][player.position.y]
+
 
     companion object {
         val MAP_VIEW_SIZE = IntVec2D(6, 6)
