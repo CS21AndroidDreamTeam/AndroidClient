@@ -2,6 +2,7 @@ package com.historyquestwaifuedition.fragments
 
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,8 @@ class MainMenuFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
     }
 
     override fun onCreateView(
@@ -31,8 +34,19 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref: SharedPreferences = context!!.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+        val username = sharedPref.getString("username", null)
+        if (username != null) {
+            b_new_game.text = "Continue as $username"
+
+        }
+
         b_new_game.setOnClickListener {
             onSelectionsClickListener?.onSelectionsClick(MainMenuSelections.NEW_GAME)
+        }
+
+        b_login.setOnClickListener {
+            onSelectionsClickListener?.onSelectionsClick(MainMenuSelections.LOGIN)
         }
 
         b_quit.setOnClickListener {
